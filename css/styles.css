@@ -1,112 +1,253 @@
-:root {
-    --se-bg-shade1: #304020;
-    --se-bg-shade2: #40750b;
-    --se-bg-shade3: #97cf60;
-    --se-bg-shade4: #b1dc85;
-    --se-bg-shade6: #a0b89d;
+@import url("./normalize.css");
 
-    --se-bg-primary: white;
-    --se-fg-primary: black;
-    --se-heading-fg-primary: var(--se-bg-shade1);
+:root {
+    --shade-one: #f5efef;
+    --shade-two: #E4D0D0;
+    --shade-three: #D5B4B4;
+    --shade-four: #7a6666;
+
+    --primary-color: white;
+    --secondary-color: black;
+
+    /*  breakpoint variables */
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-lg: 1200px;
+    --breakpoint-lg: 1400px;
+
+    --title-font: 'Sacramento', cursive;
+    --body-font: 'Montserrat', sans-serif;
 }
 
 html {
     box-sizing: border-box;
-    background-color: var(--se-bg-shade6);
+    font-size: calc(15px + 0.390625vw);
+    background-color: var(--shade-one);
+    scroll-behavior: smooth;
 }
 
-*, *::before, *::after {
+*, *:before, *:after {
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Merriweather', serif;
-    margin: 0px;
-    text-align: center;
-    line-height: 2;
-    letter-spacing: 0.7px;
+    font-size: 0.8rem;
+    font-family: var(--body-font);
+    line-height: 1.5;
+}
+
+h1 {
+    color: var(--shade-one);
 }
 
 
-h1 {
-    color: var(--se-heading-fg-primary);
-    font-family: 'Sacramento', cursive;
-    font-size: 5.625rem;
+h2 {
+    color: var(--shade-four);
+}
+
+footer {
+    padding: 2rem;
+    color: var(--shade-four);
+    background-color: var(--shade-three);
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 2rem;
+}
+
+.footer-link {
+    padding: 5px;
+    color: var(--shade-four);
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: white;
+}
+
+.banner {
+    background-image: url("../images/se-setup-400x700.jpg");
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner:after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--shade-one);
+    opacity: 0.41;
+}
+
+.banner-heading {
+    z-index: 1;
+}
+
+.banner-primary-heading {
+    font-family: var(--title-font);
+    font-size: 4rem;
     line-height: 1;
     margin: 0px;
+    text-shadow: 
+        0 6px 1px rgba(0,0,0,.1),
+        0 0 5px rgba(0,0,0,.1),
+        0 1px 3px rgba(0,0,0,.3),
+        0 3px 5px rgba(0,0,0,.2),
+        0 5px 10px rgba(0,0,0,.25),
+        0 10px 10px rgba(0,0,0,.2),
+        0 20px 20px rgba(0,0,0,.15);
+}
+
+.banner-secondary-heading {
+    color: var(--shade-one);
+    font-family: var(--body-font);
+    font-size: 1.6rem;
+    text-shadow: 5px 3px 10px black;
+}
+
+.intro {
+    padding: 0rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.careers {
+    padding: 1rem;
+}
+
+.education {
+    padding: 1rem;
+}
+
+.projects {
+    clear: both;
+    padding: 1rem;
+}
+
+.project {
+    position: relative;
+    margin-bottom: 3rem;
+    box-shadow: 0 13px 27px -5px #32325d40,
+        0 8px 16px -8px #0000004d,
+        0 -6px 16px -6px #00000008;
+}
+
+.project-image {
+    border-radius: 5px;
+    width: 100%;
+    opacity: 0.89;
+}
+
+.project-description{
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    padding: 1rem;
+    background: var(--shade-four); /* Fallback color */
+    background: rgba(122, 102, 102, 0.9); /* Black background with 0.5 */
+    width: 100%;
+    color: var(--shade-one);
+    text-align: left;
     font-weight: bolder;
 }
 
-h2 {
-    color: var(--se-heading-fg-primary);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.5rem;
+.knowns {
+    padding: 1rem;
+    margin: 2rem auto;
+}
+
+.knowns-list {
+    text-align: left;
+}
+
+.known-rating > .star::before {
+    content: '\2605';
+}
+
+.known:hover {
     font-weight: bold;
 }
 
-h3 {
-    color: var(--se-heading-fg-primary);
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    line-height: 1;
-    font-size: 1.5rem;
+.known:hover .star::before {
+    content: '\2605';
+    color: var(--shade-four);
 }
 
-hr {
-    border-style: dotted none none;
-    border-width: 12px;
-    width: 5%;
-    color: lightgray;
-}
-
-/* ----------------------- Reusable CSS ----------------------- */
-
-.header {
-    background: url("../images/captain.png");
-    height: 100vh;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.section-padding {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+.nil-star::before {
+    content: '\2606';
 }
 
 .career {
-    margin-bottom: 4rem;
+    text-align: left;
+    margin: 4rem auto 0 auto;
 }
 
-.skill-1 {
-    width: 40%;
-    margin-right: 8rem;
+.career-head {
+    margin-bottom: 2rem;
 }
 
-.skill-2 {
-    width: 40%;
+.career-head > h3 {
+    margin: 5px 0;
 }
 
-.fg-black {
-    color: var(--se-fg-primary)
+.project-link {
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
-.absolute {
-    position: absolute;
+.project-link:after {
+    content: '\2197';
+    border: 1px solid white;
+    padding: 0px 3px;
+    font-size: 8px;
+    border-radius: 4px;
+    margin-left: 5px;
 }
 
-.relative {
-    position: relative;
+/** Navigation menu mobile */
+
+.hamburger {
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0px 5px;
+    text-align: right;
 }
 
-.underline {
-    text-decoration: underline;
+.nav-menu {
+    background-color: rgba(255,255,255, 0.769);
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 5;
 }
 
-.bg-white {
-    background-color: var(--se-bg-primary);
+.nav-list {
+    list-style: none;
+}
+
+.nav-list-item {
+    padding: 0.5rem 0rem;
+}
+
+.nav-link {
+    color: var(--shade-four);
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+/** Background style classes **/
+.float-right {
+    float: right;
 }
 
 .bg-no-repeat {
@@ -125,61 +266,98 @@ hr {
     background-size: cover;
 }
 
-.float-right {
-    float: right;
-}
-
 .min-height {
     min-height: 100vh;
 }
 
-.max-width {
-    max-width: 720px;
+.max-width920 {
+    max-width: 920px;
+}
+
+.margin-center-auto {
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
 }
 
 .text-justify {
     text-align: justify;
 }
 
-.px-12 {
-    padding-left: 12px;
-    padding-right: 12px;
+.inactive {
+    display: none;
 }
 
-.margin-auto-center {
-    margin: 0 auto;
+@media (min-width: 576px) {
+    .banner {
+        background-image: url("../images/se-setup-800x1100.jpg");
+    }
+
+    .known-list-1 {
+        float: left;
+        width: 48%;
+    }
+    
+    .known-list-2 {
+        float: right;
+        width: 48%;
+        margin-left: 4%;
+    }
+    
+    .hamburger {
+        display: none;
+    }
+
+    .nav-menu {
+        background: none;
+        margin-top: 1rem;
+        text-align: center;
+    }            
+
+    .nav-list {
+        display: inline;
+        padding: 0.8rem;
+        background-color: rgba(255,255,255, 0.769);
+        text-align: center;
+        list-style: none;
+        border-radius: 24px;
+        position: fixed;
+        top: 22px;
+        right: 20px;
+    }
+
+    .nav-list-item {
+        display: inline;
+        padding: 0.4rem;
+    }
+
+    .nav-list-item:hover {
+        background: rgba(255,255,255, 0.9);
+        border-radius: 24px;
+    }
 }
 
-.text-left {
-    text-align: left;
+@media (min-width: 768px) {
+    .banner {
+        background-image: url("../images/se-setup-800x1100.jpg");
+    }
+
+    .known-list-1 {
+        float: left;
+        width: 48%;
+    }
+    
+    .known-list-2 {
+        float: right;
+        width: 48%;
+        margin-left: 4%;
+    }
 }
 
-.text-light {
-    color: darkgray;
-    font-weight: bold;
-}
-
-.skill:hover {
-    font-weight: bold;
-}
-
-.star::before {
-    content: '\2605';
-}
-
-.skill-rating.star::before {
-    content: '\2605';
-}
-
-.skill:hover .star::before {
-    content: '\2605';
-    color: yellow;
-}
-
-.nil-star::before {
-    content: '\2606';
-}
-
-.inline-block {
-    display: inline-block;
+@media (min-width: 992px) {
+    .banner {
+        background-image: url("../images/se-setup-5000x3333.jpg");
+    }
 }
